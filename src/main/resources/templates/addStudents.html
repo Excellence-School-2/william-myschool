@@ -47,14 +47,16 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Age</label>
-                <input name="age" type="text" class="form-control">
-              </div>
-            <div class="input-group mb-3">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Class</button>
-                <ul th:each="classroom : ${classrooms}"   class="dropdown-menu">
-                  <li ><a th:text="${classroom.section}" class="dropdown-item">Action</a></li>
-                </ul>
-              </div>
+                <input name="age" type="number" class="form-control">
+            </div>
+                <fieldset>
+                  <div class="mb-3">
+                    <label for="disabledSelect" class="form-label">Class</label>
+                    <select name="section" id="disabledSelect" class="form-select">
+                      <option th:each="classroom : ${classrooms}" th:text="${classroom.section}" th:value="${classroom.section}">Disabled select</option>
+                    </select>
+                  </div>
+                </fieldset>
             <button type="submit" class="btn btn-primary">Add new student</button>
           </form>
     </div>

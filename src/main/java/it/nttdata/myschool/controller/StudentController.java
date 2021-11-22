@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.nttdata.myschool.entity.Student;
 import it.nttdata.myschool.repository.ClassroomRepository;
@@ -37,7 +38,8 @@ public class StudentController {
     }
 
     @PostMapping("/addStudents")
-    public String addStudent(Student student){
+    public String addStudent(Student student, @RequestParam String section){
+        student.setClassroom(classroomRepository.findClassroombySection(section));
         studentRepository.save(student);
         return "redirect:/students";
 
